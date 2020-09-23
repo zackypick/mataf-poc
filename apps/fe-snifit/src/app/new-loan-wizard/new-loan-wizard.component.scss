@@ -1,0 +1,38 @@
+:host {
+  .product-table-row {
+    display: flex;
+
+    &.header {
+      padding-left: 35px;
+      color: darkgrey;
+    }
+
+    .product-table-cell {
+      padding: 10px;
+      flex-basis: 100px;
+      width: 100px;
+      border-bottom: 1px solid #80808057;
+      text-transform: capitalize;
+    }
+  }
+  .step-footer {
+    text-align: end;
+  }
+
+  .loan-product-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+
+    .mat-radio-button {
+      padding: 10px;
+    }
+  }
+
+  .loan-wizard-title {
+    font-size: 18px;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+  }
+}

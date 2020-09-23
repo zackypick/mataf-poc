@@ -1,0 +1,55 @@
+import { CreateLoanProductDto } from '@mataf-poc/ods-mongoose';
+import { Currency } from '@mataf-poc/models';
+
+export const loanProducts: CreateLoanProductDto[] = [
+  {
+    name: 'loan 1',
+    creditScoreLimit: 5,
+    currency: Currency.ILS,
+    loanCode: 1102,
+    loanRate: 3.4,
+    maxLoanAmount: 100000,
+    maxLoanTermMonths: 48,
+    subAccountTypeCode: 105,
+  },
+  {
+    name: 'loan 2',
+    creditScoreLimit: 6,
+    currency: Currency.ILS,
+    loanCode: 1103,
+    loanRate: 2.5,
+    maxLoanAmount: 150000,
+    maxLoanTermMonths: 76,
+    subAccountTypeCode: 106,
+  },
+  {
+    name: 'loan 3',
+    creditScoreLimit: 8,
+    currency: Currency.ILS,
+    loanCode: 1104,
+    loanRate: 1.5,
+    maxLoanAmount: 150000,
+    maxLoanTermMonths: 36,
+    subAccountTypeCode: 106,
+  },
+  {
+    name: 'loan 4',
+    creditScoreLimit: 7,
+    currency: Currency.USD,
+    loanCode: 1105,
+    loanRate: 1.8,
+    maxLoanAmount: 50000,
+    maxLoanTermMonths: 48,
+    subAccountTypeCode: 105,
+  },
+  {
+    name: 'loan 5',
+    creditScoreLimit: 7,
+    currency: Currency.USD,
+    loanCode: 1106,
+    loanRate: 1.5,
+    maxLoanAmount: 50000,
+    maxLoanTermMonths: 48,
+    subAccountTypeCode: 105,
+  },
+];

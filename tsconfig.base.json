@@ -1,0 +1,27 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@mataf-poc/shared": ["libs/shared/src/index.ts"],
+      "@mataf-poc/models": ["libs/models/src/index.ts"],
+      "@mataf-poc/ods-mongoose": ["libs/ods-mongoose/src/index.ts"],
+      "@mataf-poc/utils": ["libs/utils/src/index.ts"],
+      "@mataf-poc/material": ["libs/material/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

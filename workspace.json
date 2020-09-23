@@ -1,0 +1,743 @@
+{
+  "version": 1,
+  "projects": {
+    "shared": {
+      "root": "libs/shared",
+      "sourceRoot": "libs/shared/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/shared/tsconfig.lib.json",
+              "libs/shared/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/jest.config.js",
+            "tsConfig": "libs/shared/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "models": {
+      "root": "libs/models",
+      "sourceRoot": "libs/models/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/models/tsconfig.lib.json",
+              "libs/models/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/models/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/models/jest.config.js",
+            "tsConfig": "libs/models/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "core-ods": {
+      "root": "apps/core-ods",
+      "sourceRoot": "apps/core-ods/src",
+      "projectType": "application",
+      "prefix": "core-ods",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/core-ods",
+            "main": "apps/core-ods/src/main.ts",
+            "tsConfig": "apps/core-ods/tsconfig.app.json",
+            "assets": ["apps/core-ods/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/core-ods/src/environments/environment.ts",
+                  "with": "apps/core-ods/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "core-ods:build",
+            "inspect": true,
+            "port": 9339
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/core-ods/tsconfig.app.json",
+              "apps/core-ods/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/core-ods/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/core-ods/jest.config.js",
+            "tsConfig": "apps/core-ods/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "ms-accounts": {
+      "root": "apps/ms-accounts",
+      "sourceRoot": "apps/ms-accounts/src",
+      "projectType": "application",
+      "prefix": "ms-accounts",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/ms-accounts",
+            "main": "apps/ms-accounts/src/main.ts",
+            "tsConfig": "apps/ms-accounts/tsconfig.app.json",
+            "assets": ["apps/ms-accounts/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/ms-accounts/src/environments/environment.ts",
+                  "with": "apps/ms-accounts/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "ms-accounts:build",
+            "inspect": true,
+            "port": 9229
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/ms-accounts/tsconfig.app.json",
+              "apps/ms-accounts/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/ms-accounts/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/ms-accounts/jest.config.js",
+            "tsConfig": "apps/ms-accounts/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "ms-risk": {
+      "root": "apps/ms-risk",
+      "sourceRoot": "apps/ms-risk/src",
+      "projectType": "application",
+      "prefix": "ms-risk",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/ms-risk",
+            "main": "apps/ms-risk/src/main.ts",
+            "tsConfig": "apps/ms-risk/tsconfig.app.json",
+            "assets": ["apps/ms-risk/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/ms-risk/src/environments/environment.ts",
+                  "with": "apps/ms-risk/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "ms-risk:build",
+            "inspect": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/ms-risk/tsconfig.app.json",
+              "apps/ms-risk/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/ms-risk/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/ms-risk/jest.config.js",
+            "tsConfig": "apps/ms-risk/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "ms-loans": {
+      "root": "apps/ms-loans",
+      "sourceRoot": "apps/ms-loans/src",
+      "projectType": "application",
+      "prefix": "ms-loans",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/ms-loans",
+            "main": "apps/ms-loans/src/main.ts",
+            "tsConfig": "apps/ms-loans/tsconfig.app.json",
+            "assets": ["apps/ms-loans/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/ms-loans/src/environments/environment.ts",
+                  "with": "apps/ms-loans/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "ms-loans:build",
+            "inspect": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/ms-loans/tsconfig.app.json",
+              "apps/ms-loans/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/ms-loans/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/ms-loans/jest.config.js",
+            "tsConfig": "apps/ms-loans/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "ms-bff": {
+      "root": "apps/ms-bff",
+      "sourceRoot": "apps/ms-bff/src",
+      "projectType": "application",
+      "prefix": "ms-bff",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/ms-bff",
+            "main": "apps/ms-bff/src/main.ts",
+            "tsConfig": "apps/ms-bff/tsconfig.app.json",
+            "assets": ["apps/ms-bff/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/ms-bff/src/environments/environment.ts",
+                  "with": "apps/ms-bff/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "ms-bff:build",
+            "inspect": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/ms-bff/tsconfig.app.json",
+              "apps/ms-bff/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/ms-bff/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/ms-bff/jest.config.js",
+            "tsConfig": "apps/ms-bff/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "fe-snifit": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/fe-snifit",
+      "sourceRoot": "apps/fe-snifit/src",
+      "prefix": "mataf-poc",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/fe-snifit",
+            "index": "apps/fe-snifit/src/index.html",
+            "main": "apps/fe-snifit/src/main.ts",
+            "polyfills": "apps/fe-snifit/src/polyfills.ts",
+            "tsConfig": "apps/fe-snifit/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/fe-snifit/src/favicon.ico",
+              "apps/fe-snifit/src/assets"
+            ],
+            "styles": ["apps/fe-snifit/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/fe-snifit/src/environments/environment.ts",
+                  "with": "apps/fe-snifit/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "fe-snifit:build",
+            "proxyConfig": "apps/fe-snifit/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "fe-snifit:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "fe-snifit:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/fe-snifit/tsconfig.app.json",
+              "apps/fe-snifit/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/fe-snifit/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/fe-snifit/jest.config.js",
+            "tsConfig": "apps/fe-snifit/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/fe-snifit/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "fe-snifit-e2e": {
+      "root": "apps/fe-snifit-e2e",
+      "sourceRoot": "apps/fe-snifit-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/fe-snifit-e2e/cypress.json",
+            "tsConfig": "apps/fe-snifit-e2e/tsconfig.e2e.json",
+            "devServerTarget": "fe-snifit:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "fe-snifit:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/fe-snifit-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/fe-snifit-e2e/**/*"]
+          }
+        }
+      }
+    },
+    "core-ods-db": {
+      "root": "apps/core-ods-db",
+      "sourceRoot": "apps/core-ods-db/src",
+      "projectType": "application",
+      "prefix": "core-ods-db",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/core-ods-db",
+            "main": "apps/core-ods-db/src/main.ts",
+            "tsConfig": "apps/core-ods-db/tsconfig.app.json",
+            "assets": ["apps/core-ods-db/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/core-ods-db/src/environments/environment.ts",
+                  "with": "apps/core-ods-db/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "core-ods-db:build",
+            "inspect": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/core-ods-db/tsconfig.app.json",
+              "apps/core-ods-db/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/core-ods-db/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/core-ods-db/jest.config.js",
+            "tsConfig": "apps/core-ods-db/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "core-ods-data-generator": {
+      "root": "apps/core-ods-data-generator",
+      "sourceRoot": "apps/core-ods-data-generator/src",
+      "projectType": "application",
+      "prefix": "core-ods-data-generator",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/core-ods-data-generator",
+            "main": "apps/core-ods-data-generator/src/main.ts",
+            "tsConfig": "apps/core-ods-data-generator/tsconfig.app.json",
+            "assets": ["apps/core-ods-data-generator/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/core-ods-data-generator/src/environments/environment.ts",
+                  "with": "apps/core-ods-data-generator/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "core-ods-data-generator:build",
+            "inspect": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/core-ods-data-generator/tsconfig.app.json",
+              "apps/core-ods-data-generator/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/core-ods-data-generator/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/core-ods-data-generator/jest.config.js",
+            "tsConfig": "apps/core-ods-data-generator/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "ods-mongoose": {
+      "root": "libs/ods-mongoose",
+      "sourceRoot": "libs/ods-mongoose/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/ods-mongoose/tsconfig.lib.json",
+              "libs/ods-mongoose/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ods-mongoose/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ods-mongoose/jest.config.js",
+            "tsConfig": "libs/ods-mongoose/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "utils": {
+      "root": "libs/utils",
+      "sourceRoot": "libs/utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/utils/tsconfig.lib.json",
+              "libs/utils/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/utils/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/utils/jest.config.js",
+            "tsConfig": "libs/utils/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "material": {
+      "projectType": "library",
+      "root": "libs/material",
+      "sourceRoot": "libs/material/src",
+      "prefix": "mataf-poc",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/material/tsconfig.lib.json",
+              "libs/material/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/material/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/material/jest.config.js",
+            "tsConfig": "libs/material/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/material/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/react": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/web": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/nx-plugin": {
+      "plugin": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "fe-snifit"
+}

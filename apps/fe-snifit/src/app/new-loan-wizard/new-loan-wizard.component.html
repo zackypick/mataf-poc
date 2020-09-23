@@ -1,0 +1,99 @@
+<div>
+  <div class="loan-wizard-title">
+    Loan Wizard
+    <span>
+      Account: <b>{{ data.accountNumber }}</b> Score:
+      <b>{{ data.creditScore }}</b>
+    </span>
+  </div>
+  <mat-vertical-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="loanProductFormGroup">
+      <form [formGroup]="loanProductFormGroup">
+        <ng-template matStepLabel>Select Loan Product</ng-template>
+        <div class="product-table-row header">
+          <div class="product-table-cell">Name</div>
+          <div class="product-table-cell">Code</div>
+          <div class="product-table-cell">Max Term</div>
+          <div class="product-table-cell">Max Amount</div>
+          <div class="product-table-cell">Score</div>
+        </div>
+        <mat-radio-group
+          class="loan-product-radio-group"
+          [(ngModel)]="selectedProduct"
+          formControlName="loanProductCtrl"
+          required
+        >
+          <mat-radio-button
+            class="example-radio-button"
+            *ngFor="let product of loanProducts"
+            [value]="product.loanCode"
+          >
+            <div class="product-table-row">
+              <div class="product-table-cell">{{ product.name }}</div>
+              <div class="product-table-cell">{{ product.loanCode }}</div>
+              <div class="product-table-cell">
+                {{ product.maxLoanTermMonths }}
+              </div>
+              <div class="product-table-cell">
+                {{ product.maxLoanAmount | currency: product.currency }}
+              </div>
+              <div class="product-table-cell">
+                {{ product.creditScoreLimit }}
+              </div>
+            </div>
+          </mat-radio-button>
+        </mat-radio-group>
+        <div class="step-footer">
+          <button
+            [disabled]="loanProductFormGroup.invalid"
+            color="primary"
+            mat-raised-button
+            matStepperNext
+          >
+            Next
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Fill Loan Term & Amount</ng-template>
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input
+            matInput
+            formControlName="secondCtrl"
+            placeholder="Ex. 1 Main St, New York, NY"
+            required
+          />
+        </mat-form-field>
+        <div class="step-footer">
+          <button
+            [disabled]="loanProductFormGroup.invalid"
+            mat-raised-button
+            matStepperPrevious
+          >
+            Back
+          </button>
+          <button
+            [disabled]="loanProductFormGroup.invalid"
+            color="primary"
+            mat-raised-button
+            matStepperNext
+          >
+            Next
+          </button>
+        </div>
+        <div></div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Take Loan</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+</div>

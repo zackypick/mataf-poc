@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <span>Welcome to Snifit</span>
+</mat-toolbar>
+<div fxLayout="row" class="sn-main-layout" fxLayoutAlign="space-between">
+  <div class="sn-enter-partner">
+    <mat-form-field class="example-form-field">
+      <mat-label>Enter partner ID</mat-label>
+      <input matInput type="text" [(ngModel)]="partnerId" />
+    </mat-form-field>
+    <button mat-button color="primary" (click)="handleSearchPartnerClicked()">
+      Search
+    </button>
+    <div class="sn-id-examples">tip: try out 108149777, 106150467</div>
+  </div>
+  <div class="sn-partner-details">
+    <mat-spinner *ngIf="isLoadingAccounts"> </mat-spinner>
+    <partner-account-list *ngIf="!isLoadingAccounts" [accounts]="accountList">
+    </partner-account-list>
+  </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,77 @@
+{
+  "npmScope": "mataf-poc",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "workspace.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "shared": {
+      "tags": ["scope:shared-backend"]
+    },
+    "models": {
+      "tags": ["scope:shared-all"]
+    },
+    "ms-accounts": {
+      "tags": ["scope:backend-ms", "scope:backend"],
+      "implicitDependencies": ["core-ods", "models"]
+    },
+    "ms-risk": {
+      "tags": ["scope:backend-ms", "scope:backend"],
+      "implicitDependencies": ["core-ods", "models"]
+    },
+    "ms-loans": {
+      "tags": ["scope:backend-ms", "scope:backend"],
+      "implicitDependencies": ["core-ods", "models"]
+    },
+    "ms-bff": {
+      "tags": ["scope:backend-for-frontend", "scope:backend"],
+      "implicitDependencies": ["ms-accounts", "ms-risk", "ms-loans", "models"]
+    },
+    "fe-snifit": {
+      "tags": ["scope:frontend"],
+      "implicitDependencies": ["ms-bff", "models"]
+    },
+    "fe-snifit-e2e": {
+      "tags": ["scope:frontend"],
+      "implicitDependencies": ["fe-snifit", "models"]
+    },
+    "core-ods": {
+      "tags": ["scope:backend-core", "scope:backend", "scope:backend-ods"],
+      "implicitDependencies": ["core-ods-db", "models"]
+    },
+    "core-ods-db": {
+      "tags": ["scope:backend-ods", "scope:backend", "scope:ods-db"],
+      "implicitDependencies": ["models"]
+    },
+    "core-ods-data-generator": {
+      "tags": ["scope:backend-ods", "scope:backend", "scope:ods-generator"],
+      "implicitDependencies": ["core-ods-db", "models"]
+    },
+    "ods-mongoose": {
+      "tags": []
+    },
+    "utils": {
+      "tags": ["utils-backend"]
+    },
+    "material": {
+      "tags": []
+    }
+  }
+}
