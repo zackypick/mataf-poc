@@ -15,6 +15,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatExpansionModule,
     MatStepperModule,
     MatDialogModule,
+    MatSnackBarModule,
   ],
   exports: [
     FlexLayoutModule,
@@ -52,6 +54,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatExpansionModule,
     MatStepperModule,
     MatDialogModule,
+    MatSnackBarModule,
   ],
 })
 export class MaterialModule {}

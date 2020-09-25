@@ -76,10 +76,7 @@ export class GeneratorService {
     );
     createAccountDto.partners = [partner];
     // create sub accounts
-    const subTypes = GeneratorService.getRandomArr<string>(
-      ['saving', 'checking', 'loans'],
-      2
-    );
+    const subTypes = ['saving', 'checking', 'loans'];
 
     createAccountDto.subAccounts = [];
     for (let i = 0; i < subTypes.length; i++) {

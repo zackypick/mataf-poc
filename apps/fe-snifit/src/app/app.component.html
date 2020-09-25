@@ -7,15 +7,33 @@
       <mat-label>Enter partner ID</mat-label>
       <input matInput type="text" [(ngModel)]="partnerId" />
     </mat-form-field>
-    <button mat-button color="primary" (click)="handleSearchPartnerClicked()">
+    <button mat-button color="primary" (click)="loadPartnerAccountsAndLoans()">
       Search
     </button>
-    <div class="sn-id-examples">tip: try out 108149777, 106150467</div>
+    <div class="sn-id-examples">
+      tip: try out 108149777, 106150467, 106189768
+    </div>
+
+    <div class="sn-data-gen">
+      <mat-divider></mat-divider>
+      <p>Data</p>
+      <button mat-raised-button (click)="cleanData()">
+        Clean
+      </button>
+      <button mat-raised-button color="primary" (click)="generateData()">
+        Generate
+      </button>
+    </div>
   </div>
   <div class="sn-partner-details">
     <mat-spinner *ngIf="isLoadingAccounts"> </mat-spinner>
-    <partner-account-list *ngIf="!isLoadingAccounts" [accounts]="accountList">
-    </partner-account-list>
+    <partner-account-details
+      *ngIf="!isLoadingAccounts"
+      [accounts]="accountList"
+      [loans]="accountLoans"
+      (loanTaken)="loadPartnerAccountsAndLoans()"
+    >
+    </partner-account-details>
   </div>
 </div>
 <router-outlet></router-outlet>

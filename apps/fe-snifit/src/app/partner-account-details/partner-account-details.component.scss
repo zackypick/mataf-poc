@@ -1,0 +1,27 @@
+:host {
+  text-align: left;
+  width: 100%;
+}
+.partner-account-details {
+  width: 100%;
+  table {
+    width: 100%;
+    box-shadow: none;
+  }
+  .table-title {
+    text-decoration: underline;
+    padding: 35px 10px 10px 10px;
+  }
+  .account-list-empty-state {
+    font-size: 20px;
+    text-align: center;
+  }
+  .mat-expansion-panel-header {
+    background: #80808012;
+  }
+  .partner-accounts-footer {
+    padding: 10px;
+    text-align: end;
+    padding-top: 20px;
+  }
+}

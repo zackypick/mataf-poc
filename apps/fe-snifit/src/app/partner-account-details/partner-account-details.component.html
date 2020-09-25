@@ -1,0 +1,52 @@
+<div class="partner-account-details">
+  <div *ngIf="accounts && !accounts.length" class="account-list-empty-state">
+    No accounts found
+  </div>
+  <mat-accordion *ngIf="accounts && accounts.length">
+    <mat-expansion-panel
+      *ngFor="let account of accounts; index as i"
+      expanded="i === 0"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Account Number: {{ account.number }}
+        </mat-panel-title>
+        <mat-panel-description>
+          Holder: {{ account.holder }}
+        </mat-panel-description>
+        <mat-panel-description>
+          Credit: {{ account.creditScoreRating }}
+        </mat-panel-description>
+        <mat-panel-description>
+          Sub-Accounts: {{ account.subAccounts.length }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="table-title">
+        Sub-Accounts Details:
+      </div>
+      <!-- sub accounts table -->
+      <sub-accounts-table
+        [subAccounts]="account.subAccounts"
+      ></sub-accounts-table>
+      <!-- Loans table -->
+      <div *ngIf="loans && loans.length">
+        <div class="table-title">
+          Loans Details:
+        </div>
+        <loans-table
+          [loans]="loans | accountLoans: account.number"
+        ></loans-table>
+      </div>
+      <!-- Add new loan -->
+      <div class="partner-accounts-footer">
+        <button
+          color="primary"
+          mat-raised-button
+          (click)="openNewLoanDialog(account.number, account.creditScoreRating)"
+        >
+          New Loan
+        </button>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
